@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_finalprojectmanagementsystem" default="compile.module.finalprojectmanagementsystem">
+  <dirname property="module.finalprojectmanagementsystem.basedir" file="${ant.file.module_finalprojectmanagementsystem}"/>
+  
+  <property name="module.jdk.home.finalprojectmanagementsystem" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.finalprojectmanagementsystem" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.finalprojectmanagementsystem" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.finalprojectmanagementsystem" value="-encoding UTF-8 -source 9 -target 9 ${compiler.args}"/>
+  
+  <property name="finalprojectmanagementsystem.output.dir" value="${module.finalprojectmanagementsystem.basedir}/out/production/FinalProjectManagementSystem"/>
+  <property name="finalprojectmanagementsystem.testoutput.dir" value="${module.finalprojectmanagementsystem.basedir}/out/test/FinalProjectManagementSystem"/>
+  
+  <path id="finalprojectmanagementsystem.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="finalprojectmanagementsystem.module.production.classpath">
+    <path refid="${module.jdk.classpath.finalprojectmanagementsystem}"/>
+    <path refid="library.sqlite-jdbc-3.21.0.classpath"/>
+  </path>
+  
+  <path id="finalprojectmanagementsystem.runtime.production.module.classpath">
+    <pathelement location="${finalprojectmanagementsystem.output.dir}"/>
+    <path refid="library.sqlite-jdbc-3.21.0.classpath"/>
+  </path>
+  
+  <path id="finalprojectmanagementsystem.module.classpath">
+    <path refid="${module.jdk.classpath.finalprojectmanagementsystem}"/>
+    <pathelement location="${finalprojectmanagementsystem.output.dir}"/>
+    <path refid="library.sqlite-jdbc-3.21.0.classpath"/>
+  </path>
+  
+  <path id="finalprojectmanagementsystem.runtime.module.classpath">
+    <pathelement location="${finalprojectmanagementsystem.testoutput.dir}"/>
+    <pathelement location="${finalprojectmanagementsystem.output.dir}"/>
+    <path refid="library.sqlite-jdbc-3.21.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.finalprojectmanagementsystem">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.finalprojectmanagementsystem">
+    <patternset refid="excluded.from.module.finalprojectmanagementsystem"/>
+  </patternset>
+  
+  <path id="finalprojectmanagementsystem.module.sourcepath">
+    <dirset dir="${module.finalprojectmanagementsystem.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.finalprojectmanagementsystem" depends="compile.module.finalprojectmanagementsystem.production,compile.module.finalprojectmanagementsystem.tests" description="Compile module FinalProjectManagementSystem"/>
+  
+  <target name="compile.module.finalprojectmanagementsystem.production" depends="register.custom.compilers" description="Compile module FinalProjectManagementSystem; production classes">
+    <mkdir dir="${finalprojectmanagementsystem.output.dir}"/>
+    <javac2 destdir="${finalprojectmanagementsystem.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.finalprojectmanagementsystem}/javac">
+      <compilerarg line="${compiler.args.finalprojectmanagementsystem}"/>
+      <bootclasspath refid="finalprojectmanagementsystem.module.bootclasspath"/>
+      <classpath refid="finalprojectmanagementsystem.module.production.classpath"/>
+      <src refid="finalprojectmanagementsystem.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.finalprojectmanagementsystem"/>
+    </javac2>
+    
+    <copy todir="${finalprojectmanagementsystem.output.dir}">
+      <fileset dir="${module.finalprojectmanagementsystem.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.finalprojectmanagementsystem.tests" depends="register.custom.compilers,compile.module.finalprojectmanagementsystem.production" description="compile module FinalProjectManagementSystem; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.finalprojectmanagementsystem" description="cleanup module">
+    <delete dir="${finalprojectmanagementsystem.output.dir}"/>
+    <delete dir="${finalprojectmanagementsystem.testoutput.dir}"/>
+  </target>
+</project>

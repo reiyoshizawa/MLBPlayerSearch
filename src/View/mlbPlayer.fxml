@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2000.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.mlbPlayerController">
+   <children>
+      <VBox prefHeight="2000.0" prefWidth="1500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="47.0" prefWidth="1460.0" style="-fx-background-color: #002e6d#002e6d;">
+               <children>
+                  <ImageView disable="true" fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="MLB Player Search " textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="921.0" prefWidth="1460.0">
+               <children>
+                  <VBox prefHeight="1032.0" prefWidth="622.0">
+                     <children>
+                        <VBox prefHeight="354.0" prefWidth="639.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <Label>
+                                       <font>
+                                          <Font name="Helvetica Neue" size="32.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="loadButton" mnemonicParsing="false" onAction="#loadDataFromDatabase" text="Load" />
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="playerTable" prefHeight="481.0" prefWidth="469.0" tableMenuButtonVisible="true">
+                                <columns>
+                                  <TableColumn fx:id="playerId" editable="false" prefWidth="75.0" text="playerId" />
+                                  <TableColumn fx:id="birthYear" editable="false" prefWidth="75.0" text="birthYear" />
+                                    <TableColumn fx:id="birthCountry" prefWidth="93.0" text="birthCountry" />
+                                    <TableColumn fx:id="nameFirst" prefWidth="93.0" text="nameFirst" />
+                                    <TableColumn fx:id="nameLast" prefWidth="93.0" text="nameLast" />
+                                    <TableColumn fx:id="nameGiven" prefWidth="93.0" text="nameGiven" />
+                                    <TableColumn fx:id="weight" prefWidth="64.0" text="weight" />
+                                    <TableColumn fx:id="height" prefWidth="69.0" text="height" />
+                                    <TableColumn fx:id="bats" prefWidth="93.0" text="bats" />
+                                    <TableColumn fx:id="throwing" prefWidth="93.0" text="throwing" />
+                                    <TableColumn fx:id="debut" prefWidth="93.0" text="debut" />
+                                    <TableColumn fx:id="finalGame" prefWidth="93.0" text="finalGame" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </VBox>
+                        <TitledPane collapsible="false" prefHeight="430.0" prefWidth="472.0" text="Advansed Search">
+                           <content>
+                              <VBox prefHeight="298.0" prefWidth="542.0">
+                                 <children>
+                                    <VBox prefHeight="115.0" prefWidth="522.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="756.0">
+                                             <children>
+                                                <Label text="Name search with...">
+                                                   <font>
+                                                      <Font name="System Bold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox prefHeight="86.0" prefWidth="522.0">
+                                             <children>
+                                                <VBox prefHeight="122.0" prefWidth="742.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER_LEFT">
+                                                         <children>
+                                                            <Label alignment="TOP_LEFT" prefHeight="18.0" prefWidth="176.0" text="this exact name:" />
+                                                            <TextField fx:id="exactNameTextField" prefHeight="26.0" prefWidth="200.0" />
+                                                            <Button fx:id="exactNameSeacrhButton1" defaultButton="false" mnemonicParsing="false" onAction="#exactNameSeacrh" text="Search" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox alignment="CENTER_LEFT">
+                                                         <children>
+                                                            <Label alignment="TOP_LEFT" prefHeight="18.0" prefWidth="176.0" text="any of these name:" />
+                                                            <TextField fx:id="anyNameTextField" prefHeight="26.0" prefWidth="200.0" />
+                                                            <Button fx:id="anyNameSeacrhButton" defaultButton="false" mnemonicParsing="false" onAction="#anyNameSeacrh" text="Search" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="109.0" prefWidth="200.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="756.0">
+                                             <children>
+                                                <Label text="Then narrow your results by...">
+                                                   <font>
+                                                      <Font name="System Bold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox prefHeight="243.0" prefWidth="777.0">
+                                             <children>
+                                                <VBox prefHeight="212.0" prefWidth="769.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER_LEFT">
+                                                         <children>
+                                                            <Label alignment="TOP_LEFT" prefHeight="18.0" prefWidth="176.0" text="birthYear" />
+                                                            <TextField fx:id="birthYearTextField" prefHeight="26.0" prefWidth="200.0" />
+                                                            <Button fx:id="birthYearSearchButton" defaultButton="false" mnemonicParsing="false" onAction="#birthYearSearch" text="Search" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox alignment="CENTER_LEFT">
+                                                         <children>
+                                                            <Label alignment="TOP_LEFT" prefHeight="18.0" prefWidth="176.0" text="birthCountry" />
+                                                            <TextField fx:id="birthCountryTextField" prefHeight="26.0" prefWidth="200.0" />
+                                                            <Button fx:id="birthCountrySearchButton" defaultButton="false" mnemonicParsing="false" onAction="#birthCountrySearch" text="Search" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="37.0">
+                                                         <children>
+                                                            <Label alignment="TOP_LEFT" prefHeight="18.0" prefWidth="176.0" text="debut" />
+                                                            <TextField fx:id="debutTextField" prefHeight="26.0" prefWidth="200.0" />
+                                                            <Button fx:id="debutSearchButton" defaultButton="false" mnemonicParsing="false" onAction="#debutSearch" text="Search" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="64.0">
+                                                         <children>
+                                                            <Label alignment="TOP_LEFT" prefHeight="18.0" prefWidth="176.0" text="finalGame" />
+                                                            <TextField fx:id="finalGameTextField" prefHeight="26.0" prefWidth="200.0" />
+                                                            <Button fx:id="finalGameSearchButton" defaultButton="false" mnemonicParsing="false" onAction="#finalGameSearch" text="Search" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="120.0" prefWidth="777.0" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="105.0" prefWidth="522.0" spacing="20.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="57.0" prefWidth="522.0">
+                                             <children>
+                                                <Button fx:id="weightTop10Button" mnemonicParsing="false" onAction="#weightTop10" prefHeight="200.0" prefWidth="200.0" text="Weight Top 10" />
+                                                <Button fx:id="heightTop10Button" mnemonicParsing="false" onAction="#heightTop10" prefHeight="200.0" prefWidth="200.0" text="Height Top 10" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="58.0" prefWidth="522.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" onAction="#displayBirthCountryChart" prefHeight="200.0" prefWidth="200.0" text="Nationality" />
+                                                <Button mnemonicParsing="false" onAction="#displayBatsChart" prefHeight="200.0" prefWidth="200.0" text="Bats" />
+                                                <Button mnemonicParsing="false" onAction="#displayThrowsChart" prefHeight="200.0" prefWidth="200.0" text="Throws" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </TitledPane>
+                     </children>
+                  </VBox>
+                  <HBox prefHeight="1960.0" prefWidth="994.0">
+                     <children>
+                        <PieChart fx:id="birthCountryChart" prefHeight="1960.0" prefWidth="524.0" title="Nationality" />
+                        <VBox prefHeight="1960.0" prefWidth="465.0">
+                           <children>
+                              <PieChart fx:id="batsChart" prefWidth="465.0" title="Bats" />
+                              <PieChart fx:id="throwsChart" title="Throws" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</AnchorPane>
